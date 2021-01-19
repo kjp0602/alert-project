@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"
+          integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+          crossorigin="anonymous"></script>
+  <script src="/javascripts/alert-modal.js"></script>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <ul id="events" class="alert-modal"></ul>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const $events = document.getElementById('events');
+
+    const newItem = (content) => {
+      const item = document.createElement('li');
+      item.className='contents';
+      item.innerText = content;
+      return item;
+    };
+
+    const socket = io();
+
+    socket.on('connect', () => {
+      //$events.appendChild(newItem('connect'));
+
+    });
+    socket.on('alert', (msg) => {
+      $events.appendChild(newItem(`hello - ${msg.id}: ${msg.msg}`));
+      alertModal($events);
+    });
+    socket.emit('alert', {id:'123', msg:'테스트입니다.', url:'www.naver.com'});
+  </script>
+  </body>
+</html>

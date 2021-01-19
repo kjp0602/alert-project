@@ -1,0 +1,35 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.alert-modal{
+  display: none;
+  position: fixed;
+  bottom: -100px;
+
+  width: 100%;
+  height: 100px;
+
+
+
+}
+.alert-modal .contents{
+  background-color: wheat;
+  border: #00B7FF 1px solid;
+  border-radius: 15px 15px 15px 15px / 15px 15px 15px 15px;
+  width: 500px;
+  height: 100px;
+  padding : 10px;
+  margin: 0 auto;
+}
+.alert-modal .contents .id{
+  font-weight: bold;
+}
+.alert-modal .contents .msg{
+  text-wrap: inherit;
+}
